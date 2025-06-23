@@ -1,33 +1,177 @@
+/* Mobile-first base styles */
+body {
+  font-size: 14px;
+}
 .tool-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
-
-.sidebar {
-  transition: all 0.3s ease;
-}
-
 .active-tool {
   background-color: #e0f2fe;
   border-left: 4px solid #0ea5e9;
 }
 
-.text-tool textarea {
-  min-height: 200px;
+/* Sidebar becomes off-canvas on mobile */
+.sidebar {
+  position: fixed; /* Changed from relative on desktop */
+  width: 280px;
+  height: 100vh;
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
 }
 
-.dark-mode {
-  background-color: #1f2937;
-  color: #f3f4f6;
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Main content area */
+.main-content {
+  width: 100%;
+  margin-left: 0; /* Default to no margin on mobile */
+  transition: margin-left 0.3s ease;
+}
+
+/* The .sidebar.open + .main-content rule should NOT be here for mobile */
+/* It should be inside the media query for desktop */
+
+
+/* Mobile header with menu button */
+.mobile-header {
+  display: flex; /* Changed from none */
+  padding: 1rem;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Tool cards grid */
+.tool-grid {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* Form elements */
+.text-tool textarea,
+.text-tool input {
+  width: 100%;
+  min-width: auto;
+}
+
+/* Button groups */
+.button-group {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Utility classes for mobile */
+.mobile-hidden {
+  display: none;
+}
+
+/* Dark mode adjustments */
+.dark-mode .mobile-header {
+  background-color: #111827;
+  border-color: #374151;
 }
 
 .dark-mode .tool-card {
   background-color: #374151;
   color: #f3f4f6;
 }
-
 .dark-mode .sidebar {
   background-color: #111827;
+}
+
+/* Touch-friendly elements */
+button, input, textarea, select {
+  min-height: 44px;
+}
+
+.tool-card {
+  padding: 1.25rem;
+}
+
+.dark-mode {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+.text-tool textarea {
+  min-height: 200px;
+}
+
+
+/* Prevent zoom on input focus on mobile */
+@media screen and (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+/* Media queries for larger screens */
+@media (min-width: 768px) {
+  .sidebar {
+    position: relative; /* Sidebar is relative on desktop */
+    transform: translateX(0); /* Always visible */
+  }
+
+  .main-content {
+    margin-left: 280px; /* Only apply margin on desktop */
+  }
+
+  .mobile-header {
+    display: none !important; /* Hide mobile header on desktop */
+  }
+
+  .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .button-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Header adjustments for desktop */
+  .header-content {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .header-actions {
+    width: auto; /* Revert to auto width on desktop */
+    justify-content: flex-end; /* Align actions to the right */
+  }
+
+  .search-container {
+    width: auto; /* Revert to auto width on desktop */
+  }
+}
+
+@media (min-width: 1024px) {
+  .tool-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .button-group {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Styles for text diff tool - added for visual clarity */
+.diff-line {
+  padding: 2px 0;
+}
+
+.diff-line span {
+  display: block;
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+.file-tool input[type="file"] {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    width: 100%;
 }
 
 /* Additional CSS for JSON syntax highlighting */

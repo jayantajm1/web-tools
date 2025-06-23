@@ -42,6 +42,46 @@ const tools = {
     title: "Text Diff",
     description: "Compare two texts and highlight the differences.",
   },
+  "html-minifier": {
+    title: "HTML Minifier",
+    description: "Remove whitespace and compress HTML code",
+  },
+  "css-minifier": {
+    title: "CSS Minifier",
+    description: "Minify CSS code by removing whitespace and comments",
+  },
+  "js-minifier": {
+    title: "JavaScript Minifier",
+    description: "Minify JavaScript code",
+  },
+  "sql-formatter": {
+    title: "SQL Formatter",
+    description: "Beautify SQL queries with proper formatting",
+  },
+  "html-entity-converter": {
+    title: "HTML Entity Converter",
+    description: "Encode/decode HTML entities",
+  },
+  "bbcode-to-html": {
+    title: "BBCode to HTML",
+    description: "Convert forum BBCode to HTML",
+  },
+  "markdown-to-html": {
+    title: "Markdown to HTML",
+    description: "Convert Markdown formatted text to HTML",
+  },
+  "html-tags-remover": {
+    title: "HTML Tags Remover",
+    description: "Strip HTML tags from text",
+  },
+  "user-agent-parser": {
+    title: "User Agent Parser",
+    description: "Extract information from browser user-agent strings",
+  },
+  "url-parser": {
+    title: "URL Parser",
+    description: "Breakdown and analyze URL components",
+  },
 };
 
 // Load a tool into the main view
@@ -760,5 +800,143 @@ function checkDarkModePreference() {
   const darkMode = localStorage.getItem("darkMode");
   if (darkMode === "enabled") {
     toggleDarkMode(); // This will apply dark mode
+  }
+}
+
+// HTML Minifier
+function minifyHTML() {
+  const input = document.getElementById("htmlInput").value;
+  // Simple minification (replace with a proper library in production)
+  const minified = input
+    .replace(/\<!--.*?--\>/g, "") // Remove comments
+    .replace(/\s+/g, " ") // Collapse whitespace
+    .replace(/>\s+</g, "><"); // Remove spaces between tags
+  document.getElementById("htmlOutput").value = minified;
+}
+
+// CSS Minifier
+function minifyCSS() {
+  const input = document.getElementById("cssInput").value;
+  // Simple minification
+  const minified = input
+    .replace(/\/\*.*?\*\//g, "") // Remove comments
+    .replace(/\s+/g, " ") // Collapse whitespace
+    .replace(/\s*([{}:;,])\s*/g, "$1") // Remove spaces around special chars
+    .replace(/;}/g, "}"); // Remove last semicolon in rules
+  document.getElementById("cssOutput").value = minified;
+}
+
+// JS Minifier
+function minifyJS() {
+  const input = document.getElementById("jsInput").value;
+  // Simple minification (use a proper minifier in production)
+  const minified = input
+    .replace(/\/\/.*/g, "") // Remove single-line comments
+    .replace(/\/\*[\s\S]*?\*\//g, "") // Remove multi-line comments
+    .replace(/\s+/g, " ") // Collapse whitespace
+    .replace(/\s*([=+\-*\/%&|^~!<>?:,;{}()[\]])\s*/g, "$1"); // Remove spaces around operators
+  document.getElementById("jsOutput").value = minified;
+}
+
+// User Agent Parser
+function parseUserAgent() {
+  const ua = document.getElementById("userAgentInput").value;
+  if (!ua) return;
+
+  // Simple parsing (use a proper library like ua-parser-js in production)
+  const result = document.getElementById("userAgentResult");
+  result.innerHTML = `
+    <h3 class="font-medium mb-2">Parsed Information:</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+      <div class="bg-white p-2 rounded">
+        <span class="text-sm text-gray-500">Browser:</span>
+        <div class="font-medium">${guessBrowser(ua)}</div>
+      </div>
+      <div class="bg-white p-2 rounded">
+        <span class="text-sm text-gray-500">OS:</span>
+        <div class="font-medium">${guessOS(ua)}</div>
+      </div>
+      <div class="bg-white p-2 rounded">
+        <span class="text-sm text-gray-500">Device:</span>
+        <div class="font-medium">${guessDevice(ua)}</div>
+      </div>
+      <div class="bg-white p-2 rounded">
+        <span class="text-sm text-gray-500">Mobile:</span>
+        <div class="font-medium">${isMobile(ua) ? "Yes" : "No"}</div>
+      </div>
+    </div>
+  `;
+  result.classList.remove("hidden");
+}
+
+// Helper functions for UA parsing
+function guessBrowser(ua) {
+  if (ua.includes("Chrome")) return "Chrome";
+  if (ua.includes("Firefox")) return "Firefox";
+  if (ua.includes("Safari")) return "Safari";
+  if (ua.includes("Edge")) return "Edge";
+  if (ua.includes("Opera")) return "Opera";
+  if (ua.includes("MSIE") || ua.includes("Trident/"))
+    return "Internet Explorer";
+  return "Unknown";
+}
+
+function guessOS(ua) {
+  if (ua.includes("Windows")) return "Windows";
+  if (ua.includes("Mac OS")) return "macOS";
+  if (ua.includes("Linux")) return "Linux";
+  if (ua.includes("Android")) return "Android";
+  if (ua.includes("iOS") || ua.includes("iPhone")) return "iOS";
+  return "Unknown";
+}
+
+function guessDevice(ua) {
+  if (ua.includes("Mobile")) return "Mobile";
+  if (ua.includes("Tablet")) return "Tablet";
+  if (isMobile(ua)) return "Mobile";
+  return "Desktop";
+}
+
+function isMobile(ua) {
+  return /Mobile|Android|iPhone|iPad|iPod/i.test(ua);
+}
+
+// URL Parser
+function parseURL() {
+  const urlString = document.getElementById("urlInput").value;
+  if (!urlString) return;
+
+  try {
+    const url = new URL(urlString);
+    const result = document.getElementById("urlResult");
+
+    result.innerHTML = `
+      <h3 class="font-medium mb-2">URL Components:</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div class="bg-white p-2 rounded">
+          <span class="text-sm text-gray-500">Protocol:</span>
+          <div class="font-mono">${url.protocol}</div>
+        </div>
+        <div class="bg-white p-2 rounded">
+          <span class="text-sm text-gray-500">Hostname:</span>
+          <div class="font-mono">${url.hostname}</div>
+        </div>
+        <div class="bg-white p-2 rounded">
+          <span class="text-sm text-gray-500">Path:</span>
+          <div class="font-mono">${url.pathname}</div>
+        </div>
+        <div class="bg-white p-2 rounded">
+          <span class="text-sm text-gray-500">Search Params:</span>
+          <div class="font-mono">${url.search || "None"}</div>
+        </div>
+        <div class="bg-white p-2 rounded">
+          <span class="text-sm text-gray-500">Hash:</span>
+          <div class="font-mono">${url.hash || "None"}</div>
+        </div>
+      </div>
+    `;
+    result.classList.remove("hidden");
+  } catch (e) {
+    alert("Invalid URL format");
   }
 }
