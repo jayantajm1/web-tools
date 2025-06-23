@@ -13,6 +13,7 @@
   </head>
   <body class="bg-gray-50 font-sans">
     <div class="flex h-screen overflow-hidden">
+      <!-- Sidebar -->
       <div class="sidebar bg-white w-64 border-r border-gray-200 flex flex-col">
         <div class="p-4 border-b border-gray-200">
           <h1 class="text-xl font-bold text-blue-600 flex items-center">
@@ -229,6 +230,77 @@
                 </li>
               </ul>
             </div>
+
+            <!-- New: Time Utilities -->
+            <div class="mb-6">
+              <h2 class="text-xs uppercase font-semibold text-gray-500 mb-2">
+                Time Utilities
+              </h2>
+              <ul>
+                <li class="mb-1">
+                  <button
+                    onclick="loadTool('time-tool')"
+                    class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 flex items-center tool-nav"
+                  >
+                    <i class="fas fa-clock mr-2 text-indigo-500"></i> Time Tool
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- New: Unit Converters -->
+            <div class="mb-6">
+              <h2 class="text-xs uppercase font-semibold text-gray-500 mb-2">
+                Unit Converters
+              </h2>
+              <ul>
+                <li class="mb-1">
+                  <button
+                    onclick="loadTool('weight-converter')"
+                    class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 flex items-center tool-nav"
+                  >
+                    <i class="fas fa-weight-hanging mr-2 text-red-500"></i>
+                    Weight Converter
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- New: File Converters (Placeholders) -->
+            <div class="mb-6">
+              <h2 class="text-xs uppercase font-semibold text-gray-500 mb-2">
+                File Converters
+              </h2>
+              <ul>
+                <li class="mb-1">
+                  <button
+                    onclick="loadTool('image-converter')"
+                    class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 flex items-center tool-nav"
+                  >
+                    <i class="fas fa-image mr-2 text-teal-500"></i> Image
+                    Converter
+                  </button>
+                </li>
+                <li class="mb-1">
+                  <button
+                    onclick="loadTool('image-to-doc')"
+                    class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 flex items-center tool-nav"
+                  >
+                    <i class="fas fa-file-image mr-2 text-teal-500"></i> Image
+                    to Doc
+                  </button>
+                </li>
+                <li class="mb-1">
+                  <button
+                    onclick="loadTool('pdf-converter')"
+                    class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 flex items-center tool-nav"
+                  >
+                    <i class="fas fa-file-pdf mr-2 text-teal-500"></i> PDF
+                    Converter
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="p-4 border-t border-gray-200">
@@ -240,7 +312,9 @@
         </div>
       </div>
 
+      <!-- Main Content -->
       <div class="flex-1 overflow-auto">
+        <!-- Header -->
         <header
           class="bg-white border-b border-gray-200 p-4 flex justify-between items-center"
         >
@@ -270,14 +344,18 @@
           </div>
         </header>
 
+        <!-- Tool Content -->
         <main class="p-6">
+          <!-- Default Dashboard View -->
           <div id="dashboardView">
             <div class="mb-8">
               <h2 class="text-2xl font-bold mb-4">Recently Used Tools</h2>
               <div
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                 id="recentTools"
-              ></div>
+              >
+                <!-- Recent tools will be populated here -->
+              </div>
             </div>
 
             <div class="mb-8">
@@ -522,11 +600,89 @@
                     Parse URLs into their components
                   </p>
                 </div>
+
+                <!-- New Tools for Dashboard View -->
+                <div
+                  onclick="loadTool('time-tool')"
+                  class="tool-card bg-white p-6 rounded-lg shadow-md cursor-pointer transition-all duration-300"
+                >
+                  <div class="flex items-center mb-4">
+                    <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                      <i class="fas fa-clock text-indigo-600"></i>
+                    </div>
+                    <h3 class="font-semibold">Time Tool</h3>
+                  </div>
+                  <p class="text-gray-600 text-sm">
+                    Display current time and date with timezone options.
+                  </p>
+                </div>
+
+                <div
+                  onclick="loadTool('weight-converter')"
+                  class="tool-card bg-white p-6 rounded-lg shadow-md cursor-pointer transition-all duration-300"
+                >
+                  <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                      <i class="fas fa-weight-hanging text-red-600"></i>
+                    </div>
+                    <h3 class="font-semibold">Weight Converter</h3>
+                  </div>
+                  <p class="text-gray-600 text-sm">
+                    Convert weights between different units (kg, lbs, g, oz).
+                  </p>
+                </div>
+
+                <div
+                  onclick="loadTool('image-converter')"
+                  class="tool-card bg-white p-6 rounded-lg shadow-md cursor-pointer transition-all duration-300"
+                >
+                  <div class="flex items-center mb-4">
+                    <div class="bg-teal-100 p-3 rounded-full mr-4">
+                      <i class="fas fa-image text-teal-600"></i>
+                    </div>
+                    <h3 class="font-semibold">Image Converter</h3>
+                  </div>
+                  <p class="text-gray-600 text-sm">
+                    Convert image formats (basic placeholder).
+                  </p>
+                </div>
+
+                <div
+                  onclick="loadTool('image-to-doc')"
+                  class="tool-card bg-white p-6 rounded-lg shadow-md cursor-pointer transition-all duration-300"
+                >
+                  <div class="flex items-center mb-4">
+                    <div class="bg-teal-100 p-3 rounded-full mr-4">
+                      <i class="fas fa-file-image text-teal-600"></i>
+                    </div>
+                    <h3 class="font-semibold">Image to Document</h3>
+                  </div>
+                  <p class="text-gray-600 text-sm">
+                    Convert images to document formats (complex, placeholder).
+                  </p>
+                </div>
+
+                <div
+                  onclick="loadTool('pdf-converter')"
+                  class="tool-card bg-white p-6 rounded-lg shadow-md cursor-pointer transition-all duration-300"
+                >
+                  <div class="flex items-center mb-4">
+                    <div class="bg-teal-100 p-3 rounded-full mr-4">
+                      <i class="fas fa-file-pdf text-teal-600"></i>
+                    </div>
+                    <h3 class="font-semibold">PDF Converter</h3>
+                  </div>
+                  <p class="text-gray-600 text-sm">
+                    Convert files to/from PDF (complex, placeholder).
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
+          <!-- Tool Views (initially hidden) -->
           <div id="toolViews" class="hidden">
+            <!-- Text Case Converter -->
             <div id="text-case-converter" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6 mb-6">
                 <div class="flex flex-col md:flex-row gap-4">
@@ -644,6 +800,7 @@
               </div>
             </div>
 
+            <!-- Character Counter -->
             <div id="text-counter" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="mb-4">
@@ -714,6 +871,7 @@
               </div>
             </div>
 
+            <!-- JSON Formatter -->
             <div id="json-formatter" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4 mb-4">
@@ -793,6 +951,7 @@
               </div>
             </div>
 
+            <!-- Password Generator -->
             <div id="password-generator" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="mb-6">
@@ -933,12 +1092,15 @@
                     Saved Passwords
                   </h3>
                   <div class="bg-gray-50 p-4 rounded-md">
-                    <ul id="passwordList" class="divide-y divide-gray-200"></ul>
+                    <ul id="passwordList" class="divide-y divide-gray-200">
+                      <!-- Saved passwords will appear here -->
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Base64 Converter -->
             <div id="base64-converter" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="mb-4">
@@ -1072,6 +1234,7 @@
               </div>
             </div>
 
+            <!-- UUID Generator -->
             <div id="uuid-generator" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="mb-6">
@@ -1154,12 +1317,15 @@
                     Multiple UUIDs
                   </h3>
                   <div class="bg-gray-50 p-4 rounded-md">
-                    <ul id="uuidList" class="divide-y divide-gray-200"></ul>
+                    <ul id="uuidList" class="divide-y divide-gray-200">
+                      <!-- Generated UUIDs will appear here -->
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Text Diff -->
             <div id="text-diff" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4 mb-4">
@@ -1205,11 +1371,14 @@
                   <div
                     class="bg-gray-50 p-4 rounded-md font-mono text-sm"
                     id="diffOutput"
-                  ></div>
+                  >
+                    <!-- Diff output will appear here -->
+                  </div>
                 </div>
               </div>
             </div>
 
+            <!-- HTML Minifier -->
             <div id="html-minifier" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4">
@@ -1266,6 +1435,7 @@
               </div>
             </div>
 
+            <!-- CSS Minifier -->
             <div id="css-minifier" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4">
@@ -1322,6 +1492,7 @@
               </div>
             </div>
 
+            <!-- JS Minifier -->
             <div id="js-minifier" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4">
@@ -1378,6 +1549,7 @@
               </div>
             </div>
 
+            <!-- SQL Formatter -->
             <div id="sql-formatter" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4">
@@ -1434,6 +1606,7 @@
               </div>
             </div>
 
+            <!-- HTML Entity Converter -->
             <div id="html-entity-converter" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4 mb-4">
@@ -1459,7 +1632,7 @@
                       id="htmlEntityOutput"
                       readonly
                       class="w-full p-3 border border-gray-300 rounded-md bg-gray-50"
-                      placeholder="Converted result will appear here"
+                      placeholder="Converted result will appear here..."
                     ></textarea>
                   </div>
                 </div>
@@ -1496,6 +1669,7 @@
               </div>
             </div>
 
+            <!-- BBCode to HTML -->
             <div id="bbcode-to-html" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4 mb-4">
@@ -1550,6 +1724,7 @@
               </div>
             </div>
 
+            <!-- Markdown to HTML -->
             <div id="markdown-to-html" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4 mb-4">
@@ -1604,6 +1779,7 @@
               </div>
             </div>
 
+            <!-- HTML Tags Remover -->
             <div id="html-tags-remover" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex flex-col md:flex-row gap-4 mb-4">
@@ -1658,6 +1834,7 @@
               </div>
             </div>
 
+            <!-- User Agent Parser -->
             <div id="user-agent-parser" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="mb-4">
@@ -1682,10 +1859,13 @@
                 <div
                   id="userAgentResult"
                   class="hidden bg-gray-50 p-4 rounded-md"
-                ></div>
+                >
+                  <!-- Results will be populated here -->
+                </div>
               </div>
             </div>
 
+            <!-- URL Parser -->
             <div id="url-parser" class="text-tool">
               <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="mb-4">
@@ -1707,13 +1887,282 @@
                 >
                   <i class="fas fa-search mr-1"></i> Parse URL
                 </button>
-                <div
-                  id="urlResult"
-                  class="hidden bg-gray-50 p-4 rounded-md"
-                ></div>
+                <div id="urlResult" class="hidden bg-gray-50 p-4 rounded-md">
+                  <!-- Results will be populated here -->
+                </div>
+              </div>
+            </div>
+
+            <!-- New Tool Sections Below -->
+
+            <!-- Time Tool -->
+            <div id="time-tool" class="text-tool">
+              <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  Current Time
+                </h3>
+                <div class="text-center">
+                  <p
+                    id="currentTimeDisplay"
+                    class="text-5xl font-bold text-blue-600 mb-4"
+                  ></p>
+                  <p id="currentDateDisplay" class="text-lg text-gray-600"></p>
+                </div>
+                <div class="mt-6">
+                  <label
+                    for="timeZoneSelect"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Select Timezone</label
+                  >
+                  <select
+                    id="timeZoneSelect"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="Asia/Kolkata">Kolkata (IST)</option>
+                    <option value="America/New_York">New York (EST)</option>
+                    <option value="Europe/London">London (GMT)</option>
+                    <option value="Asia/Tokyo">Tokyo (JST)</option>
+                    <option value="America/Los_Angeles">
+                      Los Angeles (PST)
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weight Converter -->
+            <div id="weight-converter" class="text-tool">
+              <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  Weight Converter
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label
+                      for="weightInput"
+                      class="block text-sm font-medium text-gray-700 mb-2"
+                      >Amount</label
+                    >
+                    <input
+                      type="number"
+                      id="weightInput"
+                      class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter weight"
+                      value="1"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="fromUnit"
+                      class="block text-sm font-medium text-gray-700 mb-2"
+                      >From Unit</label
+                    >
+                    <select
+                      id="fromUnit"
+                      class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="kg">Kilograms (kg)</option>
+                      <option value="lbs">Pounds (lbs)</option>
+                      <option value="g">Grams (g)</option>
+                      <option value="oz">Ounces (oz)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <label
+                      for="toUnit"
+                      class="block text-sm font-medium text-gray-700 mb-2"
+                      >To Unit</label
+                    >
+                    <select
+                      id="toUnit"
+                      class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="lbs">Pounds (lbs)</option>
+                      <option value="kg">Kilograms (kg)</option>
+                      <option value="g">Grams (g)</option>
+                      <option value="oz">Ounces (oz)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      for="weightOutput"
+                      class="block text-sm font-medium text-gray-700 mb-2"
+                      >Converted Weight</label
+                    >
+                    <input
+                      type="text"
+                      id="weightOutput"
+                      readonly
+                      class="w-full p-3 border border-gray-300 rounded-md bg-gray-50"
+                      placeholder="Converted weight will appear here"
+                    />
+                  </div>
+                </div>
+                <button
+                  onclick="convertWeight()"
+                  class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
+                >
+                  <i class="fas fa-exchange-alt mr-1"></i> Convert Weight
+                </button>
+              </div>
+            </div>
+
+            <!-- Image Converter (Placeholder) -->
+            <div id="image-converter" class="text-tool">
+              <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  Image Converter
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Convert images between different formats (e.g., PNG to JPG,
+                  JPG to WebP).
+                </p>
+                <div class="mb-4">
+                  <label
+                    for="imageInput"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Upload Image</label
+                  >
+                  <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    class="w-full p-3 border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label
+                    for="imageConvertOutputFormat"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Convert To</label
+                  >
+                  <select
+                    id="imageConvertOutputFormat"
+                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="jpeg">JPEG</option>
+                    <option value="png">PNG</option>
+                    <option value="webp">WebP</option>
+                  </select>
+                </div>
+                <button
+                  class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md cursor-not-allowed opacity-50"
+                  onclick="handleImageConvert()"
+                >
+                  <i class="fas fa-magic mr-1"></i> Convert Image (Client-side
+                  implementation challenging without libraries)
+                </button>
+                <p class="text-sm text-gray-500 mt-2">
+                  Note: Full client-side image conversion requires advanced
+                  JavaScript libraries or server-side processing.
+                </p>
+              </div>
+            </div>
+
+            <!-- Image to Doc (Placeholder) -->
+            <div id="image-to-doc" class="text-tool">
+              <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  Image to Document Converter
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Convert images into document formats like PDF or Word.
+                </p>
+                <div class="mb-4">
+                  <label
+                    for="imageToDocInput"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Upload Image</label
+                  >
+                  <input
+                    type="file"
+                    id="imageToDocInput"
+                    accept="image/*"
+                    class="w-full p-3 border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label
+                    for="imageToDocOutputFormat"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Convert To</label
+                  >
+                  <select
+                    id="imageToDocOutputFormat"
+                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="pdf">PDF</option>
+                    <option value="doc">DOC (Complex)</option>
+                  </select>
+                </div>
+                <button
+                  class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md cursor-not-allowed opacity-50"
+                  onclick="handleImageToDoc()"
+                >
+                  <i class="fas fa-file-export mr-1"></i> Convert to Document
+                  (Highly complex for client-side)
+                </button>
+                <p class="text-sm text-gray-500 mt-2">
+                  Note: Converting images to editable document formats often
+                  requires powerful server-side OCR and document generation
+                  capabilities.
+                </p>
+              </div>
+            </div>
+
+            <!-- PDF Converter (Placeholder) -->
+            <div id="pdf-converter" class="text-tool">
+              <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  PDF Converter
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Convert other file formats to PDF, or PDF to other formats.
+                </p>
+                <div class="mb-4">
+                  <label
+                    for="pdfInput"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Upload File</label
+                  >
+                  <input
+                    type="file"
+                    id="pdfInput"
+                    class="w-full p-3 border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label
+                    for="pdfOutputFormat"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Convert To</label
+                  >
+                  <select
+                    id="pdfOutputFormat"
+                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="pdf">PDF</option>
+                    <option value="text">Text</option>
+                    <option value="image">Image</option>
+                  </select>
+                </div>
+                <button
+                  class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md cursor-not-allowed opacity-50"
+                  onclick="handlePdfConvert()"
+                >
+                  <i class="fas fa-file-pdf mr-1"></i> Convert PDF (Highly
+                  complex for client-side)
+                </button>
+                <p class="text-sm text-gray-500 mt-2">
+                  Note: PDF conversion typically requires robust server-side
+                  libraries or dedicated online services.
+                </p>
               </div>
             </div>
           </div>
+          <!-- Closing div for toolViews -->
         </main>
       </div>
     </div>

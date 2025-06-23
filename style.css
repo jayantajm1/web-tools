@@ -82,6 +82,11 @@ body {
   background-color: #111827;
 }
 
+.dark-mode .main-content {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
 /* Touch-friendly elements */
 button, input, textarea, select {
   min-height: 44px;
