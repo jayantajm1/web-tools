@@ -1,0 +1,60 @@
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+  transition: all 0.3s ease;
+}
+
+.active-tool {
+  background-color: #e0f2fe;
+  border-left: 4px solid #0ea5e9;
+}
+
+.text-tool textarea {
+  min-height: 200px;
+}
+
+.dark-mode {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+.dark-mode .tool-card {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+.dark-mode .sidebar {
+  background-color: #111827;
+}
+
+/* Additional CSS for JSON syntax highlighting */
+.text-purple-600 {
+  color: #9333ea;
+}
+
+.text-green-600 {
+  color: #16a34a;
+}
+
+.text-blue-600 {
+  color: #2563eb;
+}
+
+.text-yellow-600 {
+  color: #ca8a04;
+}
+
+.text-red-500 {
+  color: #ef4444;
+}
+
+.text-green-500 {
+  color: #22c55e;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
